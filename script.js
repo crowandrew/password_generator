@@ -55,9 +55,9 @@ function getValidCriteria(){
 
 // Generating random values for each type
 const generateRandomValues = {
+  lowerCase : () => {return String.fromCharCode(Math.floor(Math.random()*26)+97)},
   upperCase : () => {return String.fromCharCode(Math.floor(Math.random()*26)+65)},
-  lowerCase : () => {return String.fromCharCode(Math.floor(Math.random()*26)+97) },
-  number : () => {return String.fromCharCode(Math.floor(Math.random()*26)+97) },
+  number : () => {return Math.floor(Math.random()*10)},
   symbol : () => {
                   const specialCharacters =  " !#$%&'()*+,-./:;<=>?@[]^_`{|}~\"\\"
                   return specialCharacters[Math.floor(Math.random()*specialCharacters.length)]
