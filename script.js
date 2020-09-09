@@ -32,7 +32,6 @@ function generatePassword(lower, upper, number, symbol, length){
   
 // Prompt user for password length and test to see if password length is between 8-128 and a number
 function getValidLengthOfPassword(){
-    var userInputLengthOfPassword;
     while (true) {
       userInputLengthOfPassword = prompt("How long do you want your password?", "Please enter a number from 8 to 128.");
       if (isNaN(userInputLengthOfPassword) === false && userInputLengthOfPassword > 7 && userInputLengthOfPassword <129) {
@@ -45,10 +44,6 @@ function getValidLengthOfPassword(){
 
 // Prompts user for criteria and test to make sure the user selected ay least one character type
 function getValidCriteria(){
-  var includeLowerCase;
-  var includeUpperCase;
-  var includeNumbers;
-  var includeSpecialCharacters;  
   while(true) {
     includeLowerCase = confirm("Do you want to include lower case letters? Ok for Yes and Cancel for No");
     includeUpperCase = confirm("Do you want to include upper case letters? Ok for Yes and Cancel for No");
@@ -79,7 +74,7 @@ const generateRandomValues = {
   symbol : generateRandomSymbol
 };
 
-// ***** Generating random strings *****
+// ***** Generating random values for each type *****
 
   // Generating random upper case
 function generateRandomUpperCase() {
@@ -93,7 +88,6 @@ function generateRandomLowerCase() {
 function generateRandomNumber() {
   return String.fromCharCode(Math.floor(Math.random()*10)+48)
 }
-
  // Generating random symbols
 function generateRandomSymbol() {
   var symbol =  " !#$%&'()*+,-./:;<=>?@[]^_`{|}~\"\\"
