@@ -27,8 +27,7 @@ function generatePassword(lower, upper, number, symbol, length){
         generatedPassword += generateRandomValues[funcName]();
       });
     }
-    const finalPassword = generatedPassword.slice(0, length);
-    return finalPassword;
+    return generatedPassword.slice(0, length);
 }
   
 // Prompt user for password length and test to see if password length is between 8-128 and a number
