@@ -20,8 +20,7 @@ function generatePassword(lowerCase, upperCase, number, symbol, length){
   const characterTypesArray = [{lowerCase}, {upperCase}, {number}, {symbol}].filter(item => Object.values(item)[0]);
     for(let i=0; i<length; i+=characterTypesCount) {
       characterTypesArray.forEach(type => {
-        const funcName = Object.keys(type)[0];
-        generatedPassword += generateRandomValues[funcName]();
+        generatedPassword += generateRandomValues[Object.keys(type)[0]]();
       });
     }
     return generatedPassword.slice(0, length);
