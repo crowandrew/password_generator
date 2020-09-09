@@ -13,14 +13,7 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
    passwordText.value = password;
   
-  // Generating random string
-  const randomFunc = {
-    upper : generateRandomUpperCase,
-    lower : generateRandomLowerCase,
-    number : generateRandomNumber,
-    symbol : generateRandomSymbol
-  };
-
+  
   // Generating Password
   function generatePassword(lower, upper, number, symbol, length){
     let generatedPassword = "";
@@ -96,6 +89,14 @@ function getValidCriteria(){
   }
   return [includeLowerCase, includeUpperCase, includeNumbers, includeSpecialCharacters];
 }
+
+// Generating random string
+const randomFunc = {
+  upper : generateRandomUpperCase,
+  lower : generateRandomLowerCase,
+  number : generateRandomNumber,
+  symbol : generateRandomSymbol
+};
 
 // ***** Generating random strings *****
 
