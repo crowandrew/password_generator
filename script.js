@@ -16,13 +16,13 @@ generateBtn.addEventListener("click", writePassword);
 // Generating Password
 function generatePassword(lower, upper, number, symbol, length){
   let generatedPassword = "";
-  const typesCount = lower + upper + number + symbol;
-  const typesArr = [{lower}, {upper}, {number}, {symbol}].filter(item => Object.values(item)[0]);
-    if(typesCount === 0) {
+  const characterTypesCount = lower + upper + number + symbol;
+  const characterTypesArray = [{lower}, {upper}, {number}, {symbol}].filter(item => Object.values(item)[0]);
+    if(characterTypesCount === 0) {
     return '';
     }
-    for(let i=0; i<length; i+=typesCount) {
-      typesArr.forEach(type => {
+    for(let i=0; i<length; i+=characterTypesCount) {
+      characterTypesArray.forEach(type => {
         const funcName = Object.keys(type)[0];
         generatedPassword += generateRandomValues[funcName]();
       });
@@ -33,15 +33,15 @@ function generatePassword(lower, upper, number, symbol, length){
   
 // Prompt user for password length and test to see if password length is between 8-128 and a number
 function getValidLengthOfPassword(){
-    var lengthOfPassword;
+    var userInputLengthOfPassword;
     while (true) {
-      lengthOfPassword = prompt("How long do you want your password?", "Please enter a number from 8 to 128.");
-      if (isNaN(lengthOfPassword) === false && lengthOfPassword > 7 && lengthOfPassword <129) {
+      userInputLengthOfPassword = prompt("How long do you want your password?", "Please enter a number from 8 to 128.");
+      if (isNaN(userInputLengthOfPassword) === false && userInputLengthOfPassword > 7 && userInputLengthOfPassword <129) {
           break;
       }
       alert("Please enter a valid length from 8 to 128");
     }
-    return lengthOfPassword;
+    return userInputLengthOfPassword;
 }
 
 // Prompts user for criteria and test to make sure the user selected ay least one character type
