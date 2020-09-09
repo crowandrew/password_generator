@@ -18,9 +18,6 @@ function generatePassword(lowerCase, upperCase, number, symbol, length){
   let generatedPassword = "";
   const characterTypesCount = lowerCase + upperCase + number + symbol;
   const characterTypesArray = [{lowerCase}, {upperCase}, {number}, {symbol}].filter(item => Object.values(item)[0]);
-    if(characterTypesCount === 0) {
-    return '';
-    }
     for(let i=0; i<length; i+=characterTypesCount) {
       characterTypesArray.forEach(type => {
         const funcName = Object.keys(type)[0];
