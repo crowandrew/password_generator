@@ -3,10 +3,6 @@ var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
-  var lower;
-  var upper;
-  var number;
-  var symbol;
   const length = getValidLengthOfPassword();
   const userResponse = getValidCriteria();
   const hasLower = userResponse[0];
@@ -17,25 +13,40 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
    passwordText.value = password;
   
-
-  const generateRandom = {
-    lower : generateRandomLowerCase,
+  // Generating random string
+  const randomFunc = {
     upper : generateRandomUpperCase,
+    lower : generateRandomLowerCase,
     number : generateRandomNumber,
     symbol : generateRandomSymbol
   };
 
+  // Generating Password
   function generatePassword(lower, upper, number, symbol, length){
-        let generatePassword = "";
-
-        const typesCount = lower + upper + number + symbol;
-
-        // console.log(typesCount);
-
-        
-        
-        
-          }
+    let generatedPassword = "";
+  
+    const typesCount = lower + upper + number + symbol;
+  
+    //console.log(typesCount);
+  
+    const typesArr = [{lower}, {upper}, {number}, {symbol}].filter(item => Object.values(item)[0]);
+    
+    if(typesCount === 0) {
+      return '';
+    }
+    
+    for(let i=0; i<length; i+=typesCount) {
+      typesArr.forEach(type => {
+        const funcName = Object.keys(type)[0];
+        generatedPassword += randomFunc[funcName]();
+      });
+    }
+    
+    const finalPassword = generatedPassword.slice(0, length);
+  
+    
+    return finalPassword;
+  }
 
 
 }
@@ -109,18 +120,6 @@ function generateRandomSymbol() {
 
 
 
-// // generate random string
-// var upperCaseChar;
-// var lowerCaseChar;
-// var numberChar;
-// var symbolChar;
-
-// const generateRandom = {
-//   upperCaseChar : generateRandomUpperCase,
-//   lowerCaseChar : generateRandomLowerCase,
-//   numberChar : generateRandomNumber,
-//   symbolChar : generateRandomSymbol
-// };
 
 
 
