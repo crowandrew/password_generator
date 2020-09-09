@@ -41,7 +41,7 @@ function getValidLengthOfPassword(){
 // Prompts user for criteria and test to make sure the user selected ay least one character type
 function getValidCriteria(){
   while(true) {
-    includeLowerCase = confirm("Do you want to include lower case letters?\nClick Ok for yes and Cancel for No");
+    includeLowerCase = confirm("Do you want to include lower case letters?\nClick Ok for Yes and Cancel for No");
     includeUpperCase = confirm("Do you want to include upper case letters?\nClick Ok for Yes and Cancel for No");
     includeNumbers = confirm("Do you want to include numbers?\nClick Ok for Yes and Cancel for No");
     includeSpecialCharacters = confirm("Do you want to include special characters?\nClick Ok for Yes and Cancel for No");
