@@ -5,16 +5,9 @@ var generateBtn = document.querySelector("#generate");
 function writePassword() {
   const length = getValidLengthOfPassword();
   const userResponse = getValidCriteria();
-  const hasLower = userResponse[0];
-  const hasUpper = userResponse[1];
-  const hasNumber = userResponse[2];
-  const hasSymbol = userResponse[3];
-  var password = generatePassword(hasLower,hasUpper,hasNumber,hasSymbol, length);
-  var passwordText = document.querySelector("#password");
-   passwordText.value = password;
-    
-
-
+  let password = generatePassword(userResponse[0],userResponse[1],userResponse[2],userResponse[3], length);
+  let passwordText = document.querySelector("#password");
+   passwordText.value = password;  
 }
 
 // Add event listener to generate button
@@ -23,28 +16,19 @@ generateBtn.addEventListener("click", writePassword);
 // Generating Password
 function generatePassword(lower, upper, number, symbol, length){
   let generatedPassword = "";
-
   const typesCount = lower + upper + number + symbol;
-
-  //console.log(typesCount);
-
   const typesArr = [{lower}, {upper}, {number}, {symbol}].filter(item => Object.values(item)[0]);
-  
-  if(typesCount === 0) {
+    if(typesCount === 0) {
     return '';
-  }
-  
-  for(let i=0; i<length; i+=typesCount) {
-    typesArr.forEach(type => {
-      const funcName = Object.keys(type)[0];
-      generatedPassword += generateRandomValues[funcName]();
-    });
-  }
-  
-  const finalPassword = generatedPassword.slice(0, length);
-
-  
-  return finalPassword;
+    }
+    for(let i=0; i<length; i+=typesCount) {
+      typesArr.forEach(type => {
+        const funcName = Object.keys(type)[0];
+        generatedPassword += generateRandomValues[funcName]();
+      });
+    }
+    const finalPassword = generatedPassword.slice(0, length);
+    return finalPassword;
 }
   
 // Prompt user for password length and test to see if password length is between 8-128 and a number
