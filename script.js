@@ -37,7 +37,7 @@ function generatePassword(lower, upper, number, symbol, length){
   for(let i=0; i<length; i+=typesCount) {
     typesArr.forEach(type => {
       const funcName = Object.keys(type)[0];
-      generatedPassword += randomFunc[funcName]();
+      generatedPassword += generateRandomValues[funcName]();
     });
   }
   
@@ -88,8 +88,8 @@ function getValidCriteria(){
   return [includeLowerCase, includeUpperCase, includeNumbers, includeSpecialCharacters];
 }
 
-// Generating random string
-const randomFunc = {
+// Generating random values
+const generateRandomValues = {
   upper : generateRandomUpperCase,
   lower : generateRandomLowerCase,
   number : generateRandomNumber,
