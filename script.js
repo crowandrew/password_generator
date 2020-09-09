@@ -3,9 +3,9 @@ let generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
-  const length = getValidLengthOfPassword();
+  const passwordLength = getValidLengthOfPassword();
   const userResponse = getValidCriteria();
-  let password = generatePassword(userResponse[0],userResponse[1],userResponse[2],userResponse[3], length);
+  let password = generatePassword(userResponse[0],userResponse[1],userResponse[2],userResponse[3], passwordLength);
   let passwordText = document.querySelector("#password");
    passwordText.value = password;  
 }
@@ -31,11 +31,10 @@ function getValidLengthOfPassword(){
     while (true) {
       userInputLengthOfPassword = prompt("How long do you want your password?", "Please enter a number from 8 to 128.");
       if (isNaN(userInputLengthOfPassword) === false && userInputLengthOfPassword > 7 && userInputLengthOfPassword <129) {
-          break;
+        return userInputLengthOfPassword;
       }
       alert("Please enter a valid length from 8 to 128");
     }
-    return userInputLengthOfPassword;
 }
 
 // Prompts user for criteria and test to make sure the user selected ay least one character type
@@ -46,11 +45,10 @@ function getValidCriteria(){
     includeNumbers = confirm("Do you want to include numbers?\nClick Ok for Yes and Cancel for No");
     includeSpecialCharacters = confirm("Do you want to include special characters?\nClick Ok for Yes and Cancel for No");
     if (includeLowerCase || includeUpperCase || includeNumbers || includeSpecialCharacters) {
-      break;
+      return [includeLowerCase, includeUpperCase, includeNumbers, includeSpecialCharacters];
     } 
     alert("You must select at least one type of character.")
   }
-  return [includeLowerCase, includeUpperCase, includeNumbers, includeSpecialCharacters];
 }
 
 // Generating random values for each type
