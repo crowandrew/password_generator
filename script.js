@@ -14,10 +14,10 @@ function writePassword() {
 generateBtn.addEventListener("click", writePassword);
 
 // Generating Password
-function generatePassword(lower, upper, number, symbol, length){
+function generatePassword(lowerCase, upperCase, number, symbol, length){
   let generatedPassword = "";
-  const characterTypesCount = lower + upper + number + symbol;
-  const characterTypesArray = [{lower}, {upper}, {number}, {symbol}].filter(item => Object.values(item)[0]);
+  const characterTypesCount = lowerCase + upperCase + number + symbol;
+  const characterTypesArray = [{lowerCase}, {upperCase}, {number}, {symbol}].filter(item => Object.values(item)[0]);
     if(characterTypesCount === 0) {
     return '';
     }
@@ -68,8 +68,8 @@ function getValidCriteria(){
 
 // Generating random values
 const generateRandomValues = {
-  upper : generateRandomUpperCase,
-  lower : generateRandomLowerCase,
+  upperCase : generateRandomUpperCase,
+  lowerCase : generateRandomLowerCase,
   number : generateRandomNumber,
   symbol : generateRandomSymbol
 };
