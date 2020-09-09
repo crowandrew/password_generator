@@ -45,50 +45,25 @@ function getValidCriteria(){
     includeUpperCase = confirm("Do you want to include upper case letters?\nClick Ok for Yes and Cancel for No");
     includeNumbers = confirm("Do you want to include numbers?\nClick Ok for Yes and Cancel for No");
     includeSpecialCharacters = confirm("Do you want to include special characters?\nClick Ok for Yes and Cancel for No");
-    if (includeLowerCase) {
+    if (includeLowerCase || includeUpperCase || includeNumbers || includeSpecialCharacters) {
       break;
     } 
-    else if (includeUpperCase){
-      break;
-    }
-    else if (includeNumbers) {
-      break;
-    }
-    else if (includeSpecialCharacters) {
-      break;
-    }
-      alert("You must select at least one type of character.")
+    alert("You must select at least one type of character.")
   }
   return [includeLowerCase, includeUpperCase, includeNumbers, includeSpecialCharacters];
 }
 
-// Generating random values
+// Generating random values for each type
 const generateRandomValues = {
-  upperCase : generateRandomUpperCase,
-  lowerCase : generateRandomLowerCase,
-  number : generateRandomNumber,
-  symbol : generateRandomSymbol
+  upperCase : () => {return String.fromCharCode(Math.floor(Math.random()*26)+65)},
+  lowerCase : () => {return String.fromCharCode(Math.floor(Math.random()*26)+97) },
+  number : () => {return String.fromCharCode(Math.floor(Math.random()*26)+97) },
+  symbol : () => {
+                  const specialCharacters =  " !#$%&'()*+,-./:;<=>?@[]^_`{|}~\"\\"
+                  return specialCharacters[Math.floor(Math.random()*specialCharacters.length)]
+                  }
 };
 
-// ***** Generating random values for each type *****
-
-  // Generating random upper case
-function generateRandomUpperCase() {
-  return String.fromCharCode(Math.floor(Math.random()*26)+65)
-}
-  // Generating random lower case
-function generateRandomLowerCase() {
-  return String.fromCharCode(Math.floor(Math.random()*26)+97)  
-}
-  // Generating random number
-function generateRandomNumber() {
-  return String.fromCharCode(Math.floor(Math.random()*10)+48)
-}
- // Generating random symbols
-function generateRandomSymbol() {
-  const symbol =  " !#$%&'()*+,-./:;<=>?@[]^_`{|}~\"\\"
-  return symbol[Math.floor(Math.random()*symbol.length)]
-}
 
 
 
