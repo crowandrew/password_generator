@@ -31,7 +31,7 @@ function generatePassword(lowerCase, upperCase, number, symbol, length){
         generatedPassword += generateRandomValues[Object.keys(characterType)[0]]();
       });
     }
-    // We return a truncated generatedPassword variable to the requested size inputted by the user
+    // Returns a truncated generatedPassword variable to the requested size inputted by the user
     // because the above loop may generate more characters than needed
     return generatedPassword.slice(0, length);
 }
