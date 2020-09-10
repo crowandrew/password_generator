@@ -15,14 +15,24 @@ generateBtn.addEventListener("click", writePassword);
 
 // Generating Password
 function generatePassword(lowerCase, upperCase, number, symbol, length){
+  // Clearing generatedPassword variable
   let generatedPassword = "";
+  // Creating the variable characterTypesCount and giving it the value of the count of each character type marked true
   const characterTypesCount = lowerCase + upperCase + number + symbol;
-  const characterTypesArray = [{lowerCase}, {upperCase}, {number}, {symbol}].filter(item => Object.values(item)[0]);
+  //  Creating the array characterTypesArray and only including the values marked true
+  const characterTypesArray = [{lowerCase}, {upperCase}, {number}, {symbol}].filter(characterType => Object.values(characterType)[0]);
+    //  Run a loop that loops as many times as times as need to fill the required password length. Each loop will 
+    //  add the variable characterTypesCount to the variable i. Loops stops when i is greater than or equal
+    //  to the user inputted password length
     for(let i=0; i<length; i+=characterTypesCount) {
-      characterTypesArray.forEach(type => {
-        generatedPassword += generateRandomValues[Object.keys(type)[0]]();
+      // For each character type in array characterTypesArray grab one random character from that character type from 
+      // the object generateRandomValues and add those to the generatedPassword variable.
+      characterTypesArray.forEach(characterType => {
+        generatedPassword += generateRandomValues[Object.keys(characterType)[0]]();
       });
     }
+    // We return a truncated generatedPassword variable to the requested size inputted by the user
+    // because the above loop may generate more characters than needed
     return generatedPassword.slice(0, length);
 }
   
@@ -51,17 +61,30 @@ function getValidCriteria(){
   }
 }
 
-// Generating random values for each type
+// Creating an object that includes random values for Properties by embedding the function into the properties value
 const generateRandomValues = {
+  // Generates a random single lowercase character from the ASCII Character Set https://www.w3schools.com/charsets/ref_html_ascii.asp and
+  // adds it to value for the property lowerCase 
+  // we multiple Math.random by 26 because there are 26 letters in the alphabet
+  // we add 97 to Math.floor(Math.random()*26) because lowercase numbers start at 97 in the ASCII Character Set
   lowerCase : () => {return String.fromCharCode(Math.floor(Math.random()*26)+97)},
+  // Generates a random single uppercase character from the ASCII Character Set https://www.w3schools.com/charsets/ref_html_ascii.asp and
+  // adds it to value for the property upperCase 
+  // we multiple Math.random by 26 because there are 26 letters in the alphabet
+  // we add 65 to Math.floor(Math.random()*26) because uppercase numbers start at 97 in the ASCII Character Set
   upperCase : () => {return String.fromCharCode(Math.floor(Math.random()*26)+65)},
+  // Generates a random single integer from 0 to 9 and adds it to the value for the property number
+  // adds it to the value for the property number
+  // we multiple Math.random() by 10 because there are 10 integers from 0 to 9
   number : () => {return Math.floor(Math.random()*10)},
-  symbol : () => {
+  // Generates a random single special character and adds it to the value for the property symbol
+    symbol : () => {
+                  // Defines the variable specialCharacters as the string including all available special characters
                   const specialCharacters =  " !#$%&'()*+,-./:;<=>?@[]^_`{|}~\"\\"
+                  // Multiple a random number by the variable specialCharacters length and returns the place in the string corresponding to that value
                   return specialCharacters[Math.floor(Math.random()*specialCharacters.length)]
                   }
 };
-
 
 
 
