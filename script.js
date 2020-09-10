@@ -80,7 +80,7 @@ const generateRandomValues = {
   // Generates a random single special character and adds it to the value for the property symbol
     symbol : () => {
                   // Defines the variable specialCharacters as the string including all available special characters
-                  const specialCharacters =  " !#$%&'()*+,-./:;<=>?@[]^_`{|}~\"\\"
+                  const specialCharacters =  "!#$%&'()*+,-./:;<=>?@[]^_`{|}~\"\\"
                   // Multiple a random number by the variable specialCharacters length and returns the place in the string corresponding to that value
                   return specialCharacters[Math.floor(Math.random()*specialCharacters.length)]
                   }
